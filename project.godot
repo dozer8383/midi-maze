@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 DebugMenu="*uid://cggqb75a8w8r"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/vsync/vsync_mode=0
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg")
@@ -62,7 +67,9 @@ shoot={
 
 [physics]
 
+common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
+3d/solver/solver_iterations=4
 common/physics_interpolation=true
 
 [rendering]
