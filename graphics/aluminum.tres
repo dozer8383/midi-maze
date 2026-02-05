@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://brt37vrrbg6g7"]
+
+[ext_resource type="Texture2D" uid="uid://dy3iinrjk53ai" path="res://graphics/aluminum_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://bh85e2qr4g6c1" path="res://graphics/aluminum_normal.png" id="3"]
+
+[resource]
+metallic = 1.0
+roughness = 0.4
+roughness_texture = ExtResource("2")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 0.11
+normal_texture = ExtResource("3")
