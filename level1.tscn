@@ -2,9 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://tw63030c2ic6" path="res://graphics/sky.hdr" id="1_jwv3a"]
 [ext_resource type="PackedScene" uid="uid://bo8givmxkoof3" path="res://player.tscn" id="2_dopym"]
+[ext_resource type="Material" uid="uid://mcc0jh4nykbh" path="res://graphics/bettergrass.tres" id="3_3l65w"]
 [ext_resource type="MeshLibrary" uid="uid://byut0cfnq278c" path="res://graphics/tiles.meshlib" id="3_ootpb"]
-[ext_resource type="Material" uid="uid://dxdodcj8ni3io" path="res://graphics/grass.tres" id="3_v38iq"]
+[ext_resource type="Script" uid="uid://c7lkp2fsiscnm" path="res://addons/proton_scatter/src/scatter.gd" id="4_rjtee"]
+[ext_resource type="Script" uid="uid://bx366ina6h3uc" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="5_1idop"]
 [ext_resource type="PackedScene" uid="uid://ddktohi8d1wol" path="res://gui.tscn" id="5_v8kj3"]
+[ext_resource type="Script" uid="uid://deb51sq4wixf1" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="6_beq0j"]
+[ext_resource type="Script" uid="uid://bko4hkcfyijy4" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="7_nauge"]
+[ext_resource type="Script" uid="uid://ceoiqn85s8y3n" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="8_ycv2e"]
+[ext_resource type="Script" uid="uid://clppxvwvts6t0" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="9_c5gc3"]
+[ext_resource type="Script" uid="uid://bl6cptw2phlps" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="10_6e4cv"]
+[ext_resource type="Script" uid="uid://c27owo12yq8x1" path="res://addons/proton_scatter/src/modifiers/remove_outside_shapes.gd" id="11_rjtee"]
+[ext_resource type="Script" uid="uid://di24sjmc1irhb" path="res://addons/proton_scatter/src/scatter_item.gd" id="11_uuy0h"]
+[ext_resource type="Script" uid="uid://bdvb7qxv7w1nh" path="res://addons/proton_scatter/src/scatter_shape.gd" id="12_52iny"]
+[ext_resource type="Script" uid="uid://mw0r1jq0ga71" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="13_nxqqj"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dopym"]
 panorama = ExtResource("1_jwv3a")
@@ -34,10 +45,48 @@ fog_density = 1.0
 volumetric_fog_density = 0.01
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dopym"]
-material = ExtResource("3_v38iq")
+material = ExtResource("3_3l65w")
 size = Vector2(50, 50)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dopym"]
+
+[sub_resource type="Resource" id="Resource_7nyxr"]
+script = ExtResource("7_nauge")
+amount = 7000
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_43lh3"]
+script = ExtResource("8_ycv2e")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(0, 180, 0)
+scale = Vector3(0.1, 0.1, 0.1)
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_5le63"]
+script = ExtResource("9_c5gc3")
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+restrict_height = true
+
+[sub_resource type="Resource" id="Resource_pieet"]
+script = ExtResource("10_6e4cv")
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+enabled = false
+
+[sub_resource type="Resource" id="Resource_1idop"]
+script = ExtResource("11_rjtee")
+
+[sub_resource type="Resource" id="Resource_qiqrj"]
+script = ExtResource("5_1idop")
+stack = Array[ExtResource("6_beq0j")]([SubResource("Resource_7nyxr"), SubResource("Resource_43lh3"), SubResource("Resource_5le63"), SubResource("Resource_pieet"), SubResource("Resource_1idop")])
+
+[sub_resource type="Resource" id="Resource_beq0j"]
+script = ExtResource("13_nxqqj")
+size = Vector3(47, 1, 47)
+metadata/_custom_type_script = "uid://mw0r1jq0ga71"
 
 [node name="Node3D" type="Node3D" unique_id=72697041]
 
@@ -53,6 +102,23 @@ mesh = SubResource("PlaneMesh_dopym")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=43137694]
 shape = SubResource("WorldBoundaryShape3D_dopym")
+
+[node name="ProtonScatter" type="Node3D" parent="MeshInstance3D" unique_id=905708311]
+script = ExtResource("4_rjtee")
+modifier_stack = SubResource("Resource_qiqrj")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://c7lkp2fsiscnm"
+
+[node name="ScatterItem" type="Node3D" parent="MeshInstance3D/ProtonScatter" unique_id=1293806924]
+script = ExtResource("11_uuy0h")
+source_scale_multiplier = 0.4
+path = "uid://srrh4hng0pnf"
+
+[node name="ScatterShape" type="Node3D" parent="MeshInstance3D/ProtonScatter" unique_id=1279580026]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("12_52iny")
+shape = SubResource("Resource_beq0j")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=222877919]
 transform = Transform3D(0.5934189, -0.21374448, 0.7759944, 0, 0.9640954, 0.26555613, -0.8048938, -0.15758602, 0.57211244, 0, 0, 0)

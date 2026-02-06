@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://mcc0jh4nykbh"]
+
+[ext_resource type="Texture2D" uid="uid://caf1277ru801h" path="res://graphics/bettergrass_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ce76g77lb0gat" path="res://graphics/bettergrass_normal.png" id="3"]
+
+[resource]
+albedo_texture = ExtResource("1")
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = ExtResource("3")
+uv1_scale = Vector3(8, 8, 8)

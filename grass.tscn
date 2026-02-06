@@ -1,0 +1,54 @@
+[gd_scene format=4 uid="uid://srrh4hng0pnf"]
+
+[ext_resource type="PackedScene" uid="uid://dua6i4gwe7sj4" path="res://graphics/grass.glb" id="1_kl2qe"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kl2qe"]
+load_path = "res://.godot/imported/grass_grass.png-39e1340bb38d8de2fa691e0feda1f06c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mw2ei"]
+resource_name = "Material"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.59704864, 0.7189583, 0.46546143, 1)
+albedo_texture = SubResource("CompressedTexture2D_kl2qe")
+roughness = 0.5
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_2qnaq"]
+_surfaces = [{
+"aabb": AABB(-0.7208901, 0, -1, 1.8644419, 1.0964806, 2),
+"format": 34896613377,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAAAEAAIAAAAFAAQABgAAAAIABgACAAcA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("+2L///9/AAAAAAAAAAAAAPtiAAD/fwAAAAD//wAAAAD//wAA/38AAP//////fwAAAAD/////AAAAAAAA//8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pmnf0"]
+resource_name = "grass_Plane"
+_surfaces = [{
+"aabb": AABB(-0.7208901, 0, -1, 1.8644419, 1.0964806, 2),
+"attribute_data": PackedByteArray("2opZQCDfVabailWmIN9ZQGYT8j8sa+2lZhPtpSxr8j+ee9g/k93TpZ5706WT3dg/"),
+"format": 34896613399,
+"index_count": 18,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
+"material": SubResource("StandardMaterial3D_mw2ei"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("+2L///9/ctkAAAAAAABy2ftiAAD/f3LZAAD//wAActkAAP////+MpvtiAAD/f4ymAAAAAP//jKb7Yv///3+Mpvti////fwCA//8AAP9/AID7YgAA/38AgP//////fwCA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/f////3////9/////f///")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_2qnaq")
+
+[node name="grass" unique_id=587913532 instance=ExtResource("1_kl2qe")]
+
+[node name="Plane" parent="." index="0" unique_id=220477114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_pmnf0")
