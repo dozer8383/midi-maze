@@ -1,0 +1,150 @@
+{
+	"connections": [
+		{
+			"from": "image_2",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 4
+		},
+		{
+			"from": "image_3",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 0
+		},
+		{
+			"from": "image",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 1
+		},
+		{
+			"from": "image_4",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 2
+		},
+		{
+			"from": "image_5",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 5
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@Node@906",
+	"node_position": {
+		"x": 0.0,
+		"y": 0.0
+	},
+	"nodes": [
+		{
+			"export_last_target": "Godot/Godot 4 Standard",
+			"export_paths": {
+				"Godot/Godot 4 Standard": "/home/jackm/midi-maze/graphics/metal"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 0.0,
+				"y": 0.0
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1.0,
+					"b": 1.0,
+					"g": 1.0,
+					"r": 1.0,
+					"type": "Color"
+				},
+				"ao": 1.0,
+				"depth_scale": 0.5,
+				"emission_energy": 1.0,
+				"flags_transparent": true,
+				"metallic": 1.0,
+				"normal": 1.0,
+				"roughness": 1.0,
+				"size": 11,
+				"sss": 1.0
+			},
+			"seed_int": 0,
+			"type": "material"
+		},
+		{
+			"name": "image",
+			"node_position": {
+				"x": -485.524536132812,
+				"y": -162.7705078125
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/jackm/Downloads/Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_Metallic.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_2",
+			"node_position": {
+				"x": -486.256591796875,
+				"y": 171.7763671875
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/jackm/Downloads/Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_Normal.png"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_3",
+			"node_position": {
+				"x": -481.864288330078,
+				"y": -334.070220947266
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/jackm/Downloads/Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_BaseColor.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_4",
+			"node_position": {
+				"x": -485.524536132812,
+				"y": 7.79715538024902
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/jackm/Downloads/Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_Roughness.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		},
+		{
+			"name": "image_5",
+			"node_position": {
+				"x": -481.132232666016,
+				"y": 344.540191650391
+			},
+			"parameters": {
+				"clamp": false,
+				"fix_ar": false,
+				"image": "/home/jackm/Downloads/Poliigon_MetalSteelBrushed_7174/2K/Poliigon_MetalSteelBrushed_7174_AmbientOcclusion.jpg"
+			},
+			"seed_int": 0,
+			"type": "image"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed_int": 0,
+	"shortdesc": "",
+	"type": "graph"
+}

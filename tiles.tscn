@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://ddkhgevucb6ai"]
 
-[ext_resource type="Material" uid="uid://brt37vrrbg6g7" path="res://graphics/aluminum.tres" id="1_7h0kd"]
+[ext_resource type="Material" uid="uid://f2uljl886fda" path="res://graphics/metal.tres" id="1_7h0kd"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4vrea"]
 _surfaces = [{

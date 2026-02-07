@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://b1papefgjj04"]
+
+[ext_resource type="Texture2D" uid="uid://tw63030c2ic6" path="res://graphics/sky.hdr" id="1_feb5d"]
+[ext_resource type="PackedScene" uid="uid://bo8givmxkoof3" path="res://player.tscn" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://ddktohi8d1wol" path="res://gui.tscn" id="3_7jktm"]
+[ext_resource type="PackedScene" uid="uid://dk1pv1riwfiun" path="res://level1.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://csipybu7a5ed2" path="res://happyface.tscn" id="5_7jktm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ryrav"]
+panorama = ExtResource("1_feb5d")
+energy_multiplier = 0.6
+
+[sub_resource type="Sky" id="Sky_ootpb"]
+sky_material = SubResource("PanoramaSkyMaterial_ryrav")
+
+[sub_resource type="Environment" id="Environment_eow3j"]
+background_mode = 2
+sky = SubResource("Sky_ootpb")
+ssr_enabled = true
+ssr_max_steps = 32
+ssr_fade_in = 0.17837915
+ssr_fade_out = 0.15389256
+ssao_enabled = true
+glow_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.36176416, 0.48345393, 0.54106635, 1)
+fog_sun_scatter = 0.06
+fog_density = 1.0
+volumetric_fog_density = 0.01
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7jktm"]
+radius = 0.9964833
+
+[node name="Node3D" type="Node3D" unique_id=1914583550]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1712054432]
+environment = SubResource("Environment_eow3j")
+
+[node name="CharacterBody3D" parent="." unique_id=1033239538 instance=ExtResource("2_fc0e3")]
+
+[node name="GUI" parent="." unique_id=964619536 instance=ExtResource("3_7jktm")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1914478928]
+transform = Transform3D(0.5934189, -0.37041196, 0.71459705, 0, 0.88781536, 0.4601998, -0.8048938, -0.27309126, 0.5268464, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Node3D" parent="." unique_id=72697041 instance=ExtResource("4_fc0e3")]
+
+[node name="happyface" parent="." unique_id=1927010191 instance=ExtResource("5_7jktm")]
+transform = Transform3D(0.83146745, 0, -0.3444731, 0, 0.8999999, 0, 0.3444731, 0, 0.83146745, 12.523603, 1.138162, 0.3821211)
+
+[node name="Player" type="StaticBody3D" parent="happyface" unique_id=660586768]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="happyface/Player" unique_id=90999937]
+shape = SubResource("SphereShape3D_7jktm")

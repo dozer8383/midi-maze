@@ -5,9 +5,10 @@
 
 [resource]
 metallic = 1.0
-roughness = 0.4
+metallic_specular = 1.0
+roughness = 0.35
 roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_scale = 0.11
+normal_scale = 0.05
 normal_texture = ExtResource("3")

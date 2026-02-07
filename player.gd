@@ -32,6 +32,10 @@ func _input(event):
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		if Input.is_action_pressed("slow"):
+			mouseSensitivity = 0.0005
+		else:
+			mouseSensitivity = 0.004
 		rotate_y(-event.relative.x*mouseSensitivity)
 		$Camera3D.rotate_x(-event.relative.y*mouseSensitivity)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x,-deg_to_rad(70),deg_to_rad(70))

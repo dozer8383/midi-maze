@@ -1,0 +1,148 @@
+[gd_scene format=4 uid="uid://c030yn7gikrs"]
+
+[ext_resource type="Material" uid="uid://mcc0jh4nykbh" path="res://graphics/bettergrass.tres" id="1_r8rrl"]
+[ext_resource type="Script" uid="uid://c7lkp2fsiscnm" path="res://addons/proton_scatter/src/scatter.gd" id="2_lwvnx"]
+[ext_resource type="Script" uid="uid://bx366ina6h3uc" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="3_4ou0f"]
+[ext_resource type="Script" uid="uid://deb51sq4wixf1" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="4_4k5bj"]
+[ext_resource type="Script" uid="uid://bko4hkcfyijy4" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="5_hp87d"]
+[ext_resource type="Script" uid="uid://ceoiqn85s8y3n" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="6_gxpff"]
+[ext_resource type="Script" uid="uid://bl6cptw2phlps" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="7_2x2vu"]
+[ext_resource type="Script" uid="uid://c27owo12yq8x1" path="res://addons/proton_scatter/src/modifiers/remove_outside_shapes.gd" id="8_f8ci1"]
+[ext_resource type="Script" uid="uid://di24sjmc1irhb" path="res://addons/proton_scatter/src/scatter_item.gd" id="9_iakae"]
+[ext_resource type="Script" uid="uid://bdvb7qxv7w1nh" path="res://addons/proton_scatter/src/scatter_shape.gd" id="10_7mylh"]
+[ext_resource type="Script" uid="uid://mw0r1jq0ga71" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="11_3k4dh"]
+[ext_resource type="MeshLibrary" uid="uid://byut0cfnq278c" path="res://graphics/tiles.meshlib" id="12_idpoe"]
+[ext_resource type="Texture2D" uid="uid://b4ujygawijgnt" path="res://graphics/concrete_floor_worn_001_diff_2k.png" id="13_ggudo"]
+[ext_resource type="Texture2D" uid="uid://bj4jfmibaygr7" path="res://graphics/concrete_floor_worn_001_nor_gl_2k.png" id="14_y2jff"]
+[ext_resource type="Texture2D" uid="uid://br375lvg24kmi" path="res://graphics/concrete_floor_worn_001_rough_2k.png" id="15_545ku"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dopym"]
+material = ExtResource("1_r8rrl")
+size = Vector2(50, 50)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dopym"]
+
+[sub_resource type="Resource" id="Resource_nauge"]
+script = ExtResource("5_hp87d")
+amount = 5000
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_ycv2e"]
+script = ExtResource("6_gxpff")
+rotation = Vector3(10, 180, 10)
+scale = Vector3(0.5, 0.5, 0.5)
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_c5gc3"]
+script = ExtResource("7_2x2vu")
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+enabled = false
+
+[sub_resource type="Resource" id="Resource_6e4cv"]
+script = ExtResource("8_f8ci1")
+
+[sub_resource type="Resource" id="Resource_52iny"]
+script = ExtResource("3_4ou0f")
+stack = Array[ExtResource("4_4k5bj")]([SubResource("Resource_nauge"), SubResource("Resource_ycv2e"), SubResource("Resource_c5gc3"), SubResource("Resource_6e4cv")])
+
+[sub_resource type="Resource" id="Resource_beq0j"]
+script = ExtResource("11_3k4dh")
+size = Vector3(47, 1, 47)
+metadata/_custom_type_script = "uid://mw0r1jq0ga71"
+
+[sub_resource type="Resource" id="Resource_uuy0h"]
+script = ExtResource("11_3k4dh")
+size = Vector3(22, 1, 22)
+metadata/_custom_type_script = "uid://mw0r1jq0ga71"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e4cv"]
+albedo_texture = ExtResource("13_ggudo")
+roughness_texture = ExtResource("15_545ku")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("14_y2jff")
+uv1_scale = Vector3(15, 15, 15)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uuy0h"]
+_surfaces = [{
+"aabb": AABB(-5.25589, -0.122566, -5.25589, 10.51178, 0.061910998, 10.51178),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAgABAAQAAAADAAUAAAAFAAEAAgAGAAMABgAFAAMABAAGAAIAAQAFAAcAAQAHAAQABwAFAAYABAAHAAYA"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("gAT//4AEAAB++///gAQAAIAE//9++wAAAAAAAP//AAB++///fvsAAAAAAAAAAAAA//8AAP//AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_52iny"]
+_surfaces = [{
+"aabb": AABB(-5.25589, -0.122566, -5.25589, 10.51178, 0.061910998, 10.51178),
+"attribute_data": PackedByteArray("/9//f/+f/3//3/8//5//P/+f/z//X/8//58AAP9fAAD/n////1////+f/7//X/+//1//f/8f/3//X/8//x//P/+f/3//X/9//5//P/9f/z//n/+//1//v/+f/3//X/9/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcACAAJAAoACgAJAAsADAANAA4ADgANAA8AEAARABIAEgARABMAFAAVABYAFgAVABcA"),
+"material": SubResource("StandardMaterial3D_6e4cv"),
+"name": "Material",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("gAT//4AE//9++///gAT//4AE//9++///fvv//377//9++///fvto5f//AAD//6XkgAT//377lbsAAAAA//9su4AE//9+++7KAAAAAP//fsqABP//gATVwQAAAAAAAObB//8AAAAA/78AAAAAAAD/v///AAD///+/AAAAAP///79++///gAR98///AAAAACr0fvv//3771+H//wAA//+g4YAE//+ABNXRAAAAAAAAGdJ++///gATX7P//AAAAAAbt/3//v/9//7//f/+//3//v5jShBPS0g4UtOTJPtrkJD/K7zBJfPA3SnvFWqkTxX+pAAD/fwAA/38AAP9/AAD/fxCct66GmxSv8cJBDQbDfw2XyaGfk8g4oNKZaLuXmYu7")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uuy0h")
+
+[node name="Node3D" type="Node3D" unique_id=72697041]
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1383722077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0006608963, 0, 0.025349617)
+mesh = SubResource("PlaneMesh_dopym")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground" unique_id=1998009336]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D" unique_id=43137694]
+shape = SubResource("WorldBoundaryShape3D_dopym")
+
+[node name="ProtonScatter" type="Node3D" parent="Ground" unique_id=905708311]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.095, 0)
+script = ExtResource("2_lwvnx")
+modifier_stack = SubResource("Resource_52iny")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://c7lkp2fsiscnm"
+
+[node name="ScatterItem" type="Node3D" parent="Ground/ProtonScatter" unique_id=1293806924]
+visible = false
+script = ExtResource("9_iakae")
+source_scale_multiplier = 0.4
+path = "uid://srrh4hng0pnf"
+
+[node name="ScatterShape" type="Node3D" parent="Ground/ProtonScatter" unique_id=1279580026]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+visible = false
+script = ExtResource("10_7mylh")
+shape = SubResource("Resource_beq0j")
+
+[node name="ProtonScatterShape" type="Node3D" parent="Ground/ProtonScatter" unique_id=500026241]
+visible = false
+script = ExtResource("10_7mylh")
+negative = true
+shape = SubResource("Resource_uuy0h")
+metadata/_custom_type_script = "uid://bdvb7qxv7w1nh"
+
+[node name="Walls" type="GridMap" parent="." unique_id=600930369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh_library = ExtResource("12_idpoe")
+data = {
+"cells": PackedInt32Array(65530, 65530, 1441792, 65531, 65530, 1441792, 65532, 65530, 1441792, 65533, 65530, 1441792, 65534, 65530, 1441792, 65535, 65530, 1441792, 0, 65530, 1441792, 1, 65530, 1441792, 2, 65530, 1441792, 3, 65530, 1441792, 4, 65530, 1441792, 5, 65530, 1441792, 5, 65533, 1441792, 5, 65534, 1441792, 5, 65535, 1441792, 5, 0, 1441792, 5, 1, 1441792, 5, 2, 1441792, 5, 3, 1441792, 5, 4, 1441792, 5, 5, 1441792, 4, 5, 1441792, 3, 5, 1441792, 2, 5, 1441792, 1, 5, 1441792, 65534, 5, 1441792, 65533, 5, 1441792, 65532, 5, 1441792, 65531, 5, 1441792, 65530, 5, 1441792, 65530, 4, 1441792, 65530, 3, 1441792, 65530, 2, 1441792, 65530, 1, 1441792, 65530, 0, 1441792, 65530, 65535, 1441792, 65530, 65534, 1441792, 65530, 65533, 1441792, 65534, 6, 655360, 65534, 7, 655360, 65523, 65523, 655360, 65523, 65524, 655360, 65523, 65525, 655360, 65523, 65526, 655360, 65523, 65527, 655360, 65523, 65528, 655360, 65523, 65529, 655360, 65523, 65530, 655360, 65523, 65531, 655360, 65523, 65532, 655360, 65523, 65533, 655360, 65523, 65534, 655360, 65523, 65535, 655360, 65523, 0, 655360, 65523, 1, 655360, 65523, 2, 655360, 65523, 3, 655360, 65523, 4, 655360, 65523, 5, 655360, 65523, 6, 655360, 65523, 7, 655360, 65523, 8, 655360, 65523, 9, 655360, 65523, 10, 655360, 65523, 11, 655360, 65523, 12, 655360, 65524, 12, 655360, 65525, 12, 655360, 65527, 12, 655360, 65528, 12, 655360, 65526, 12, 655360, 65529, 12, 655360, 65530, 12, 655360, 65531, 12, 655360, 65532, 12, 655360, 65533, 12, 655360, 65534, 12, 655360, 65535, 12, 655360, 0, 12, 655360, 1, 12, 655360, 2, 12, 655360, 3, 12, 655360, 4, 12, 655360, 5, 12, 655360, 6, 12, 655360, 7, 12, 655360, 8, 12, 655360, 9, 12, 655360, 10, 12, 655360, 11, 12, 655360, 12, 12, 655360, 12, 11, 655360, 12, 10, 655360, 12, 9, 655360, 12, 8, 655360, 12, 7, 655360, 12, 6, 655360, 12, 5, 655360, 12, 4, 655360, 12, 3, 655360, 12, 2, 655360, 12, 1, 655360, 12, 65523, 655360, 12, 65524, 655360, 12, 65525, 655360, 12, 65526, 655360, 12, 65527, 655360, 12, 65528, 655360, 12, 65529, 655360, 12, 65530, 655360, 12, 65531, 655360, 12, 65532, 655360, 12, 65533, 655360, 12, 65534, 655360, 12, 65535, 655360, 12, 0, 655360, 11, 65523, 655360, 10, 65523, 655360, 9, 65523, 655360, 8, 65523, 655360, 7, 65523, 655360, 6, 65523, 655360, 5, 65523, 655360, 4, 65523, 655360, 3, 65523, 655360, 2, 65523, 655360, 1, 65523, 655360, 0, 65523, 655360, 65535, 65523, 655360, 65534, 65523, 655360, 65533, 65523, 655360, 65532, 65523, 655360, 65531, 65523, 655360, 65530, 65523, 655360, 65529, 65523, 655360, 65528, 65523, 655360, 65527, 65523, 655360, 65526, 65523, 655360, 65525, 65523, 655360, 65524, 65523, 655360, 1, 6, 655360, 1, 7, 655360, 65530, 6, 655360, 65530, 7, 655360, 65530, 10, 655360, 65530, 11, 655360, 65534, 10, 655360, 65534, 11, 655360, 1, 10, 655360, 1, 11, 655360, 5, 6, 655360, 5, 7, 655360, 5, 10, 655360, 5, 11, 655360, 65530, 65524, 655360, 65530, 65525, 655360, 65530, 65526, 655360, 65530, 65527, 655360, 5, 65529, 655360, 5, 65528, 655360, 5, 65527, 655360, 5, 65526, 655360, 0, 65526, 655360, 65535, 65526, 655360, 65535, 65527, 655360, 0, 65527, 655360, 6, 65533, 655360, 7, 65533, 655360, 10, 65533, 655360, 11, 65533, 655360, 6, 5, 655360, 7, 5, 655360, 8, 5, 655360, 8, 4, 655360, 8, 3, 655360, 8, 2, 655360, 8, 1, 655360, 9, 1, 655360, 9, 2, 655360, 9, 3, 655360, 9, 4, 655360, 9, 5, 655360, 65525, 65524, 655360, 65528, 65524, 655360, 65525, 11, 655360, 65528, 11, 655360, 7, 65524, 655360, 10, 65524, 655360, 65524, 65530, 655360, 65524, 65533, 655360, 65524, 7, 655360)
+}
+
+[node name="Platform" type="MeshInstance3D" parent="." unique_id=1770569589]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.255775, 0.0033769608)
+mesh = SubResource("ArrayMesh_52iny")

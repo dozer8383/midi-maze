@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bo8givmxkoof3"]
 
 [ext_resource type="Script" uid="uid://b85rp3iwxyrf6" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="PackedScene" uid="uid://csipybu7a5ed2" path="res://happyface.tscn" id="2_onrkg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
 
@@ -32,8 +33,11 @@ _data = {
 &"bob": SubResource("Animation_onrkg")
 }
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=1033239538]
+[node name="Player" type="CharacterBody3D" unique_id=1033239538]
 script = ExtResource("1_4flbx")
+
+[node name="happyface" parent="." unique_id=1927010191 instance=ExtResource("2_onrkg")]
+transform = Transform3D(-3.934025e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.934025e-08, 0, 1.1438811, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=680647124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -41,7 +45,7 @@ shape = SubResource("CapsuleShape3D_sh265")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=49172297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2725412, 0)
-fov = 81.10149
+fov = 75.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=841433281]
 libraries/ = SubResource("AnimationLibrary_i3pqv")
