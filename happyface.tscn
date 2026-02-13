@@ -26,6 +26,7 @@ roughness_texture = SubResource("CompressedTexture2D_f1lfn")
 roughness_texture_channel = 1
 normal_scale = 0.0
 normal_texture = SubResource("CompressedTexture2D_qpc42")
+texture_filter = 5
 distance_fade_mode = 3
 distance_fade_min_distance = 1.8
 distance_fade_max_distance = 2.3

@@ -1,0 +1,45 @@
+[gd_resource type="Theme" format=3 uid="uid://rx0hkojrq6ay"]
+
+[ext_resource type="Texture2D" uid="uid://bhbmgfxhp8ewg" path="res://graphics/yellow-button.png" id="1_cjfk0"]
+[ext_resource type="FontFile" uid="uid://cth75sggfbutv" path="res://graphics/BigShoulders_24pt-Medium.ttf" id="2_cjfk0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_e1x85"]
+load_path = "res://.godot/imported/yellow-button.png-e942524377482524523efe483442c585.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cjfk0"]
+texture = SubResource("CompressedTexture2D_e1x85")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(0.6714567, 0.6714567, 0.6714567, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vj6dk"]
+load_path = "res://.godot/imported/yellow-button.png-e942524377482524523efe483442c585.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_110ce"]
+texture = SubResource("CompressedTexture2D_vj6dk")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vj6dk"]
+texture = ExtResource("1_cjfk0")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+modulate_color = Color(1.1638972, 1.1638972, 1.1638972, 1)
+
+[resource]
+default_font = ExtResource("2_cjfk0")
+default_font_size = 16
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/hover = SubResource("StyleBoxTexture_cjfk0")
+Button/styles/normal = SubResource("StyleBoxTexture_110ce")
+Button/styles/pressed = SubResource("StyleBoxTexture_vj6dk")
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10

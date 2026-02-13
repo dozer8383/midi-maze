@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b1papefgjj04"]
 
 [ext_resource type="Texture2D" uid="uid://tw63030c2ic6" path="res://graphics/sky.hdr" id="1_feb5d"]
+[ext_resource type="Script" uid="uid://did07plupycxn" path="res://game.gd" id="1_ryrav"]
 [ext_resource type="PackedScene" uid="uid://bo8givmxkoof3" path="res://player.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ddktohi8d1wol" path="res://gui.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://dk1pv1riwfiun" path="res://level1.tscn" id="4_fc0e3"]
@@ -16,12 +17,15 @@ sky_material = SubResource("PanoramaSkyMaterial_ryrav")
 [sub_resource type="Environment" id="Environment_eow3j"]
 background_mode = 2
 sky = SubResource("Sky_ootpb")
+ambient_light_source = 3
+reflected_light_source = 2
 ssr_enabled = true
 ssr_max_steps = 32
 ssr_fade_in = 0.17837915
 ssr_fade_out = 0.15389256
-ssao_enabled = true
-glow_enabled = true
+ssr_depth_tolerance = 3.01
+ssao_radius = 1.35
+ssao_intensity = 5.93
 fog_mode = 1
 fog_light_color = Color(0.36176416, 0.48345393, 0.54106635, 1)
 fog_sun_scatter = 0.06
@@ -31,7 +35,8 @@ volumetric_fog_density = 0.01
 [sub_resource type="SphereShape3D" id="SphereShape3D_7jktm"]
 radius = 0.9964833
 
-[node name="Node3D" type="Node3D" unique_id=1914583550]
+[node name="Game" type="Node3D" unique_id=1914583550]
+script = ExtResource("1_ryrav")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1712054432]
 environment = SubResource("Environment_eow3j")
@@ -53,3 +58,7 @@ transform = Transform3D(0.83146745, 0, -0.3444731, 0, 0.8999999, 0, 0.3444731, 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="happyface/Player" unique_id=90999937]
 shape = SubResource("SphereShape3D_7jktm")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1083647805]
+_spawnable_scenes = PackedStringArray("uid://bo8givmxkoof3")
+spawn_path = NodePath("..")

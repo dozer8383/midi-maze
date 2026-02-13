@@ -33,6 +33,14 @@ _data = {
 &"bob": SubResource("Animation_onrkg")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
 [node name="Player" type="CharacterBody3D" unique_id=1033239538]
 script = ExtResource("1_4flbx")
 
@@ -49,3 +57,6 @@ fov = 75.8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera3D" unique_id=841433281]
 libraries/ = SubResource("AnimationLibrary_i3pqv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1931548723]
+replication_config = SubResource("SceneReplicationConfig_onrkg")

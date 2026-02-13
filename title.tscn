@@ -1,9 +1,155 @@
 [gd_scene format=3 uid="uid://1fdhj17p58j4"]
 
-[node name="Control" type="Control" unique_id=712542746]
+[ext_resource type="Texture2D" uid="uid://ciu5r4qwib8q4" path="res://graphics/logo.png" id="1_oyqm6"]
+[ext_resource type="Theme" uid="uid://rx0hkojrq6ay" path="res://theme.tres" id="1_y7k74"]
+[ext_resource type="Script" uid="uid://cbgffl25qaguj" path="res://titlescreen.gd" id="2_mom7w"]
+[ext_resource type="Theme" uid="uid://bw184jofhm3jg" path="res://green_theme.tres" id="3_kpexm"]
+[ext_resource type="Texture2D" uid="uid://b0uu3ua1q8jrm" path="res://graphics/menu-background.png" id="4_3xoar"]
+[ext_resource type="Script" uid="uid://0iksi51cdbhb" path="res://lobby_menu.gd" id="6_7lgly"]
+[ext_resource type="Theme" uid="uid://by8tf7kg1qwhp" path="res://blue_theme.tres" id="7_0824t"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=2140436537]
+
+[node name="Background" type="TextureRect" parent="." unique_id=1649835883]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3xoar")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TitleScreen" type="Control" parent="." unique_id=712542746]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mom7w")
+
+[node name="Logo" type="TextureRect" parent="TitleScreen" unique_id=1934430301]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.57745
+offset_top = -256.0
+offset_right = 169.57745
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_oyqm6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen" unique_id=1706642441]
+z_index = 99
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = 68.0
+offset_right = 149.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="JoinGameButton" type="Button" parent="TitleScreen/VBoxContainer" unique_id=453281854]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("1_y7k74")
+text = "JOIN GAME"
+
+[node name="HostGameButton" type="Button" parent="TitleScreen/VBoxContainer" unique_id=152034387]
+layout_mode = 2
+size_flags_vertical = 0
+theme = ExtResource("3_kpexm")
+text = "HOST GAME"
+
+[node name="LobbyMenu" type="Control" parent="." unique_id=1071758086]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_7lgly")
+
+[node name="RoomControls" type="Panel" parent="LobbyMenu" unique_id=530463110]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LobbyMenu/RoomControls" unique_id=464862105]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.0
+offset_top = -36.5
+offset_right = 149.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y7k74")
+
+[node name="StartButton" type="Button" parent="LobbyMenu/RoomControls/VBoxContainer" unique_id=1945564482]
+layout_mode = 2
+theme = ExtResource("3_kpexm")
+text = "START"
+
+[node name="QuitButton" type="Button" parent="LobbyMenu/RoomControls/VBoxContainer" unique_id=1414569501]
+layout_mode = 2
+theme = ExtResource("7_0824t")
+text = "QUIT"
+
+[node name="PlayerList" type="Panel" parent="LobbyMenu" unique_id=1482934652]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -259.0
+offset_top = -264.5
+offset_right = 259.0
+offset_bottom = 44.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LobbyMenu/PlayerList" unique_id=520172668]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y7k74")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="LobbyMenu/PlayerList/MarginContainer" unique_id=528729829]
+layout_mode = 2
+
+[connection signal="pressed" from="TitleScreen/VBoxContainer/JoinGameButton" to="TitleScreen" method="_on_join_game_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/JoinGameButton" to="LobbyMenu" method="_on_join_game_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HostGameButton" to="TitleScreen" method="_on_host_game_button_pressed"]
+[connection signal="pressed" from="TitleScreen/VBoxContainer/HostGameButton" to="LobbyMenu" method="_on_host_game_button_pressed"]
+[connection signal="pressed" from="LobbyMenu/RoomControls/VBoxContainer/StartButton" to="LobbyMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="LobbyMenu/RoomControls/VBoxContainer/QuitButton" to="LobbyMenu" method="_on_quit_button_pressed"]
